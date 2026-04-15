@@ -1,0 +1,1202 @@
+/* ============================================
+   DARK FINTECH DESIGN SYSTEM
+   Premium Mobile-First UI for Revenue System
+   ============================================ */
+
+:root {
+  /* Background Gradient - Deep Black with Green Glow */
+  --bg-primary: #0B0F0C;
+  --bg-secondary: #0F1A14;
+  --bg-gradient: linear-gradient(135deg, #0B0F0C 0%, #0F1A14 100%);
+  
+  /* Primary Colors - Neon Green */
+  --primary: #1ED760;
+  --primary-hover: #00FFA3;
+  --primary-glow: rgba(30, 215, 96, 0.3);
+  
+  /* Secondary Colors - Dark Green */
+  --secondary: #1A2B22;
+  --secondary-glow: rgba(26, 43, 34, 0.5);
+  
+  /* Accent Colors */
+  --accent-gold: #E7C873;
+  --accent-gold-glow: rgba(231, 200, 115, 0.2);
+  
+  /* Text Colors */
+  --text-primary: #FFFFFF;
+  --text-secondary: #A0A0A0;
+  --text-muted: #707070;
+  
+  /* Payment Method Colors */
+  --cash: #1ED760;
+  --card-pay: #00D9FF;
+  --app-pay: #FF6B9D;
+  --wallet-pay: #8A2BE2; /* A shade of blue-violet for Wallet */
+  
+  /* Status Colors */
+  --success: #1ED760;
+  --danger: #FF4757;
+  --warning: #FFA502;
+  
+  /* Glass & Depth */
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --shadow-sm: 0 4px 15px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.5);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background: var(--bg-gradient);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ============================================
+   LOGIN VIEW WITH ANIMATED BACKGROUND
+   ============================================ */
+
+.login-view {
+  position: fixed;
+  inset: 0;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.shader-canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.login-container {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 16px;
+}
+
+.login-card {
+  width: min(100%, 420px);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  padding: 32px 24px;
+  box-shadow: var(--shadow-lg);
+}
+
+/* ============================================
+   LAYOUT & STRUCTURE
+   ============================================ */
+
+.hidden {
+  display: none !important;
+}
+
+.view {
+  display: none;
+}
+
+.view.active {
+  display: block;
+}
+
+.app-shell {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+/* ============================================
+   HEADER / TOPBAR
+   ============================================ */
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 24px;
+  padding: 16px 20px;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-sm);
+}
+
+.topbar h1 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.topbar p {
+  margin: 6px 0 0;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+/* ============================================
+   CARDS & CONTAINERS
+   ============================================ */
+
+.card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  padding: 24px;
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ============================================
+   TYPOGRAPHY & HEADERS
+   ============================================ */
+
+.section-header h2,
+.section-header h3 {
+  margin: 0 0 8px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.section-header h2 {
+  font-size: 1.6rem;
+}
+
+.section-header h3 {
+  font-size: 1.3rem;
+}
+
+.section-header p {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.inline-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ============================================
+   FORM ELEMENTS
+   ============================================ */
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+}
+
+input,
+select {
+  width: 100%;
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
+  padding: 14px 16px;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+input::placeholder {
+  color: var(--text-muted);
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 0 20px var(--primary-glow);
+}
+
+input:disabled,
+select:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+
+button {
+  border: none;
+  border-radius: 14px;
+  padding: 14px 18px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: inherit;
+  position: relative;
+  overflow: hidden;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+button:hover::before {
+  opacity: 1;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* Primary Button - Neon Green */
+.primary-btn {
+  background: var(--primary);
+  color: #000;
+  box-shadow: 0 0 20px var(--primary-glow);
+  font-weight: 700;
+}
+
+.primary-btn:hover {
+  background: var(--primary-hover);
+  box-shadow: 0 0 30px rgba(0, 255, 163, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Secondary Button */
+.secondary-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-primary);
+  border: 1px solid var(--glass-border);
+}
+
+.secondary-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Success Button */
+.success-btn {
+  background: var(--success);
+  color: #000;
+  box-shadow: 0 0 20px rgba(30, 215, 96, 0.3);
+  font-weight: 700;
+}
+
+.success-btn:hover {
+  background: var(--primary-hover);
+  box-shadow: 0 0 30px rgba(0, 255, 163, 0.5);
+  transform: translateY(-2px);
+}
+
+.small-btn {
+  padding: 10px 14px;
+  font-size: 0.9rem;
+}
+
+/* ============================================
+   LAYOUT UTILITIES
+   ============================================ */
+
+.stack {
+  display: flex;
+  flex-direction: column;
+}
+
+.gap-md {
+  gap: 14px;
+}
+
+.grid-two,
+.filters-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.filters-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.mt-md {
+  margin-top: 16px;
+}
+
+.mt-lg {
+  margin-top: 24px;
+}
+
+/* ============================================
+   EMPLOYEE GRID
+   ============================================ */
+
+.employee-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 12px;
+}
+
+.employee-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 14px 12px;
+  color: var(--text-secondary);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+.employee-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.employee-card.active {
+  background: var(--primary);
+  color: #000;
+  border-color: var(--primary);
+  box-shadow: 0 0 20px rgba(30, 215, 96, 0.4);
+  transform: scale(1.05);
+}
+
+/* ============================================
+   PAYMENT & QUICK BUTTONS
+   ============================================ */
+
+.payment-group,
+.actions-row {
+  margin-top: 20px;
+}
+
+.group-label {
+  display: block;
+  margin-bottom: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+}
+
+.payment-buttons,
+.quick-buttons,
+.admin-tabs {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  overflow-x: auto;
+  padding-bottom: 8px; /* For scrollbar if tabs overflow */
+  -webkit-overflow-scrolling: touch;
+}
+
+.admin-tabs::-webkit-scrollbar {
+  height: 4px;
+}
+
+.admin-tabs::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 2px;
+}
+
+.admin-tabs::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 2px;
+}
+
+.tab-btn {
+  flex-shrink: 0;
+  padding: 10px 18px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-secondary);
+  border: 1px solid var(--glass-border);
+  transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.tab-btn.active {
+  background: var(--primary);
+  color: #000;
+  border-color: var(--primary);
+  box-shadow: 0 0 15px var(--primary-glow);
+  font-weight: 700;
+}
+
+/* Payment Method Buttons */
+.payment-btn {
+  flex: 1;
+  min-width: 100px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-secondary);
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
+  padding: 12px 14px;
+  font-size: 0.95rem;
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.payment-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.payment-icon {
+  font-size: 1.5rem;
+}
+
+.payment-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.payment-btn.active.cash {
+  background: var(--cash);
+  color: #000;
+  border-color: var(--cash);
+  box-shadow: 0 0 20px rgba(30, 215, 96, 0.4);
+}
+
+.payment-btn.active.card {
+  background: var(--card-pay);
+  color: #000;
+  border-color: var(--card-pay);
+  box-shadow: 0 0 20px rgba(0, 217, 255, 0.4);
+}
+
+.payment-btn.active.app {
+  background: var(--app-pay);
+  color: #fff;
+  border-color: var(--app-pay);
+  box-shadow: 0 0 20px rgba(255, 107, 157, 0.4);
+}
+
+.payment-btn.active.wallet {
+  background: var(--wallet-pay);
+  color: #fff;
+  border-color: var(--wallet-pay);
+  box-shadow: 0 0 20px rgba(138, 43, 226, 0.4);
+}
+
+/* Entry Card */
+.entry-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin-bottom: 8px;
+}
+
+.entry-card-header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.entry-card-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.entry-card-employee {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.entry-card-payment {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.entry-card-tip {
+  font-size: 0.8rem;
+  color: var(--accent-gold);
+  font-weight: 500;
+}
+
+.entry-card-amount {
+  font-weight: 700;
+  color: var(--primary);
+  font-size: 1.1rem;
+}
+
+.entry-card-delete {
+  background: none;
+  border: none;
+  color: var(--danger);
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.2s ease;
+}
+
+.entry-card-delete:hover {
+  background: rgba(255, 71, 87, 0.1);
+}
+
+/* Amount Input */
+.amount-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.amount-input {
+  font-size: 1.8rem !important;
+  font-weight: 700 !important;
+  text-align: center !important;
+  padding: 20px 16px !important;
+}
+
+.amount-currency {
+  position: absolute;
+  right: 16px;
+  color: var(--text-secondary);
+  font-weight: 600;
+  pointer-events: none;
+}
+
+/* Entry Cards List */
+.entries-card-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.entry-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 14px;
+  transition: all 0.2s ease;
+}
+
+.entry-card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(30, 215, 96, 0.3);
+  box-shadow: 0 0 15px rgba(30, 215, 96, 0.1);
+}
+
+.entry-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.entry-card-info {
+  flex: 1;
+}
+
+.entry-card-employee {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+}
+
+.entry-card-payment {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+.entry-card-delete {
+  background: rgba(255, 71, 87, 0.1);
+  color: var(--danger);
+  border: 1px solid rgba(255, 71, 87, 0.2);
+  border-radius: 8px;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.entry-card-delete:hover {
+  background: rgba(255, 71, 87, 0.2);
+  border-color: var(--danger);
+}
+
+.entry-card-amount {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--primary);
+  text-align: center;
+  padding: 8px 0;
+}
+
+.full-width {
+  width: 100%;
+}
+
+/* Quick Amount Buttons */
+.quick-btn {
+  background: rgba(30, 215, 96, 0.1);
+  color: var(--primary);
+  border: 1px solid rgba(30, 215, 96, 0.3);
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.quick-btn:hover {
+  background: rgba(30, 215, 96, 0.2);
+  border-color: var(--primary);
+  box-shadow: 0 0 15px rgba(30, 215, 96, 0.3);
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   MESSAGES & FEEDBACK
+   ============================================ */
+
+.message {
+  min-height: 20px;
+  margin: 0;
+  color: var(--danger);
+  font-size: 0.9rem;
+}
+
+/* ============================================
+   TABLES
+   ============================================ */
+
+.table-wrap {
+  overflow: auto;
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 560px;
+}
+
+th,
+td {
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--glass-border);
+  text-align: start;
+  color: var(--text-primary);
+}
+
+thead th {
+  background: rgba(255, 255, 255, 0.05);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+tbody tr {
+  transition: background 0.2s ease;
+}
+
+tbody tr:hover {
+  background: rgba(30, 215, 96, 0.05);
+}
+
+/* ============================================
+   TOTALS & PILLS
+   ============================================ */
+
+.total-pill {
+  padding: 12px 18px;
+  background: rgba(30, 215, 96, 0.1);
+  border: 1px solid rgba(30, 215, 96, 0.3);
+  border-radius: 999px;
+  font-weight: 700;
+  color: var(--primary);
+  font-size: 0.95rem;
+  box-shadow: 0 0 15px rgba(30, 215, 96, 0.2);
+}
+
+/* ============================================
+   STATS GRID
+   ============================================ */
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.stat-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(30, 215, 96, 0.3);
+  box-shadow: 0 0 25px rgba(30, 215, 96, 0.2);
+  transform: translateY(-4px);
+}
+
+.stat-card span {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.stat-card strong {
+  font-size: 1.5rem;
+  color: var(--primary);
+  font-weight: 700;
+}
+
+/* ============================================
+   TABS & NAVIGATION
+   ============================================ */
+
+.admin-tabs {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 6px;
+  gap: 6px;
+}
+
+.tab-btn {
+  background: transparent;
+  color: var(--text-secondary);
+  border: none;
+  border-radius: 10px;
+  padding: 10px 16px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.tab-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+}
+
+.tab-btn.active {
+  background: var(--primary);
+  color: #000;
+  box-shadow: 0 0 15px rgba(30, 215, 96, 0.3);
+}
+
+.tab-panel {
+  display: none;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+/* ============================================
+   MODAL
+   ============================================ */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+}
+
+.modal-overlay.hidden {
+  display: none;
+}
+
+.modal-card {
+  width: min(100%, 520px);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow-lg);
+  padding: 24px;
+  animation: slideUp 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   STATUS BADGES
+   ============================================ */
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.status-active {
+  background: rgba(30, 215, 96, 0.2);
+  color: var(--success);
+}
+
+.status-inactive {
+  background: rgba(255, 71, 87, 0.2);
+  color: var(--danger);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 900px) {
+  .filters-grid,
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 680px) {
+  .app-shell {
+    padding: 12px;
+  }
+
+  .topbar,
+  .inline-between {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .topbar h1 {
+    font-size: 1.5rem;
+  }
+
+  .grid-two,
+  .filters-grid,
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .payment-btn {
+    width: 100%;
+  }
+
+  .actions-row {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .card {
+    padding: 16px;
+  }
+
+  .payment-buttons,
+  .quick-buttons {
+    gap: 10px;
+  }
+
+  .quick-btn {
+    flex: 1;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .employee-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
+
+  .entries-card-list {
+    grid-template-columns: 1fr;
+  }
+
+  .amount-input {
+    font-size: 1.5rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .topbar {
+    padding: 12px 16px;
+  }
+
+  .topbar h1 {
+    font-size: 1.3rem;
+  }
+
+  .section-header h2 {
+    font-size: 1.3rem;
+  }
+
+  .section-header h3 {
+    font-size: 1.1rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-card {
+    padding: 16px;
+  }
+}
+
+/* ============================================
+   MOBILE-FIRST UI IMPROVEMENTS (UI/UX FIXES)
+   ============================================ */
+
+/* 1. Login Improvements */
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.toggle-password {
+  position: absolute;
+  left: 12px; /* For RTL */
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: var(--text-secondary);
+  font-size: 1.2rem;
+  z-index: 5;
+}
+
+[dir="ltr"] .toggle-password {
+  left: auto;
+  right: 12px;
+}
+
+/* 2. Employee Grid Improvements for Mobile */
+.employee-grid {
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)) !important;
+  gap: 10px !important;
+}
+
+.employee-card {
+  padding: 18px 10px !important; /* Larger touch area */
+  font-size: 0.9rem !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60px;
+}
+
+/* 3. Payment Buttons for Mobile */
+.payment-buttons {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 8px !important;
+}
+
+.payment-btn {
+  min-width: unset !important;
+  padding: 16px 8px !important;
+}
+
+/* 4. Entries Card List (Better than Tables on Mobile) */
+.entry-item-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.entry-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.entry-name {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.entry-meta {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.entry-amount {
+  font-weight: 800;
+  color: var(--primary);
+  font-size: 1.1rem;
+}
+
+/* 5. General Mobile Tweaks */
+@media (max-width: 480px) {
+  .topbar h1 {
+    font-size: 1.4rem;
+  }
+  
+  .card {
+    padding: 16px;
+  }
+  
+  .amount-input {
+    font-size: 1.5rem !important;
+  }
+  
+  .primary-btn, .secondary-btn {
+    padding: 16px 18px; /* Larger touch targets */
+  }
+}
+
+/* 6. Admin Table Responsiveness */
+.table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 12px;
+}
+
+table {
+  min-width: 600px; /* Force scroll on small screens */
+}
+
+
+/* ===== Incremental updates for Wallet + Tips + Monthly Revenue ===== */
+.entry-inputs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.payment-btn.wallet {
+  border-color: rgba(138, 43, 226, 0.35);
+}
+
+.payment-btn.wallet.active {
+  background: rgba(138, 43, 226, 0.14);
+  box-shadow: 0 0 20px rgba(138, 43, 226, 0.22);
+}
+
+.wrap-mobile {
+  flex-wrap: wrap;
+}
+
+.empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  color: var(--text-secondary);
+  padding: 20px;
+}
+
+.entry-card-breakdown,
+.entry-card-tip {
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  margin-top: 4px;
+}
+
+.table-empty {
+  text-align: center;
+  color: var(--text-secondary);
+}
+
+.monthly-filter-grid {
+  align-items: end;
+}
+
+@media (max-width: 768px) {
+  .entry-inputs-grid {
+    grid-template-columns: 1fr;
+  }
+}
